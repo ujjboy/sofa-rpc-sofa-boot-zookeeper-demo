@@ -11,18 +11,18 @@
 	<name>sofa-rpc-sofa-boot-zookeeper-demo</name>
 	<description>Demo project for Spring Boot</description>
 
-	<!--<parent>
+	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.2.RELEASE</version>
-		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-	</parent>-->
-	<!-- 替换为 SOFABoot -->
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<!-- 或者替换为 SOFABoot 
 	<parent>
 		<groupId>com.alipay.sofa</groupId>
 		<artifactId>sofaboot-dependencies</artifactId>
 		<version>2.3.1</version>
-	</parent>
+	</parent> -->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,6 +30,18 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.alipay.sofa</groupId>
+				<artifactId>sofaboot-dependencies</artifactId>
+				<version>2.3.1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<dependencies>
         <!-- 引入 SOFARPC 依赖 -->
 		<dependency>

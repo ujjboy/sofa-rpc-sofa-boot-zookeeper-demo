@@ -13,9 +13,26 @@ public class SofaRpcSofaBootZookeeperDemoApplication {
         ApplicationContext context = 
                 SpringApplication.run(SofaRpcSofaBootZookeeperDemoApplication.class, args);
 
+        // 等待ZooKeeper下发地址
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+        }
+        
         // 拿到调用端 进行 调用
         HelloService helloService = (HelloService) context.getBean("helloServiceRef");
-        String hi = helloService.sayHello("world");
-        System.out.println(hi);
+        while (true) {
+            try {
+                String hi = helloService.sayHello("world");
+                System.out.println(hi);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                Thread.sleep(2000);
+            } catch (Exception e) {
+            
+            }
+        }
     }
 }
